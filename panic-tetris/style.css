@@ -1,0 +1,290 @@
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #fdf2f8;
+  color: #334155;
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.game-page {
+  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+}
+
+.back-link,
+.reset-btn {
+  position: absolute;
+  top: 1rem;
+  padding: 0.75rem 1.2rem;
+  border-radius: 30px;
+  border: 4px solid #edf2f7;
+  background: #fff;
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  font-weight: 800;
+  z-index: 25;
+}
+
+.back-link { left: 1rem; }
+.reset-btn { right: 1rem; cursor: pointer; }
+
+.tetris-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.4rem;
+  min-height: 100vh;
+  padding: 5.4rem 1rem 0.75rem;
+}
+
+.tetris-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.55rem;
+  width: 110px;
+  margin-right: 1rem;
+  padding-top: 0.2rem;
+}
+
+.stat-box {
+  padding: 0.55rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.05);
+  font-weight: 800;
+  text-align: center;
+}
+
+.shovel-logo,
+.control-btn {
+  display: grid;
+  place-items: center;
+  border: 0;
+  cursor: pointer;
+}
+
+.shovel-logo {
+  width: 74px;
+  height: 74px;
+  margin-top: -0.2rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  touch-action: none;
+}
+
+.shovel-svg {
+  width: 74px;
+  height: 74px;
+  overflow: visible;
+  filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.16));
+}
+
+.board-wrap {
+  --cell-size: 34px;
+  position: relative;
+  width: 340px;
+  height: 680px;
+  margin-right: 110px;
+  overflow: visible;
+}
+
+.tetris-board {
+  position: relative;
+  width: 340px;
+  height: 680px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  overflow: hidden;
+  border: 4px solid #334155;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.fallen-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 30;
+}
+
+.cell,
+.active-cell,
+.fallen-block {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  box-sizing: border-box;
+}
+
+.cell {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.active-cell {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -4px 0 rgba(0, 0, 0, 0.22),
+    inset 0 0 12px rgba(0, 0, 0, 0.22);
+}
+
+.fallen-block {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -4px 0 rgba(0, 0, 0, 0.22),
+    inset 0 0 12px rgba(0, 0, 0, 0.22);
+}
+
+.spill-cell {
+  z-index: 30;
+}
+
+.cell.falling-down {
+  animation: fallToHole 1.5s forwards cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.game-over,
+.charge-indicator,
+.slap-hand,
+.cheat-indicator,
+.giant-hole {
+  position: absolute;
+  z-index: 15;
+}
+
+.game-over {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background: #ef4444;
+  color: #fff;
+  line-height: 1.35;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.charge-indicator {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-charge 0.5s infinite;
+}
+
+.slap-hand {
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+}
+
+.cheat-indicator {
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fbbf24;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.giant-hole {
+  bottom: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8rem;
+}
+
+.dragging-shovel {
+  position: fixed;
+  z-index: 40;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-height: 860px) {
+  .tetris-wrap {
+    gap: 0.6rem;
+    padding: 5.1rem 0 0.65rem;
+  }
+
+  .tetris-side {
+    width: 104px;
+    margin-right: 0.75rem;
+  }
+
+  .tetris-board {
+    width: 290px;
+    height: 580px;
+  }
+
+  .board-wrap {
+    --cell-size: 29px;
+    width: 290px;
+    height: 580px;
+  }
+}
+
+@media (max-height: 720px) {
+  .tetris-wrap {
+    gap: 0.8rem;
+    padding: 4.8rem 0.6rem 0.5rem;
+  }
+
+  .tetris-side {
+    width: 92px;
+    gap: 0.8rem;
+    margin-right: 0.6rem;
+  }
+
+  .stat-box {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.92rem;
+  }
+
+  .tetris-board {
+    width: 240px;
+    height: 480px;
+  }
+
+  .board-wrap {
+    --cell-size: 24px;
+    width: 240px;
+    height: 480px;
+    margin-right: 92px;
+  }
+
+  .shovel-logo {
+    width: 62px;
+    height: 62px;
+  }
+
+  .shovel-svg {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+@keyframes pulse-charge {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+@keyframes fallToHole {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(700px) scale(0.1) rotate(180deg); opacity: 0; }
+}

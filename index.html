@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M³. HAHAHA</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="home-page">
+      <button class="home-clock" id="home-clock" type="button" aria-label="Pause floating emoji"></button>
+      <h1 class="home-title">M³. HAHAHA</h1>
+      <p class="home-subtitle">Grab a flying game to play!</p>
+
+      <section class="game-grid">
+        <a class="game-card" href="./shape-sorter/" aria-label="Shape Sorter" title="Shape Sorter" style="--x:8vw;--y:18vh;--float-duration:2.2s;--float-delay:-1.2s;--tilt:-8deg;--dx1:18vw;--dy1:-8vh;--dx2:42vw;--dy2:4vh;--dx3:20vw;--dy3:18vh;--dx4:-10vw;--dy4:10vh;">
+          <div class="game-emoji">🟦</div>
+        </a>
+
+        <a class="game-card" href="./crow-pitcher/" aria-label="Thirsty Crow" title="Thirsty Crow" style="--x:34vw;--y:14vh;--float-duration:2.4s;--float-delay:-2.1s;--tilt:6deg;--dx1:22vw;--dy1:6vh;--dx2:36vw;--dy2:20vh;--dx3:10vw;--dy3:34vh;--dx4:-16vw;--dy4:18vh;">
+          <div class="game-emoji">🐦‍⬛</div>
+        </a>
+
+        <a class="game-card" href="./red-riding-hood/" aria-label="Mushroom Delivery" title="Mushroom Delivery" style="--x:71vw;--y:18vh;--float-duration:2.1s;--float-delay:-0.8s;--tilt:9deg;--dx1:12vw;--dy1:8vh;--dx2:-8vw;--dy2:28vh;--dx3:-24vw;--dy3:24vh;--dx4:-6vw;--dy4:-4vh;">
+          <div class="game-emoji">🍄</div>
+        </a>
+
+        <a class="game-card" href="./cheese-shell/" aria-label="Golden Egg Shell" title="Golden Egg Shell" style="--x:20vw;--y:64vh;--float-duration:2.6s;--float-delay:-1.7s;--tilt:-5deg;--dx1:28vw;--dy1:-10vh;--dx2:54vw;--dy2:-2vh;--dx3:22vw;--dy3:-18vh;--dx4:-8vw;--dy4:-6vh;">
+          <div class="game-emoji">🥚</div>
+        </a>
+
+        <a class="game-card" href="./panic-tetris/" aria-label="Panic Tetris" title="Panic Tetris" style="--x:60vw;--y:68vh;--float-duration:2.3s;--float-delay:-2.8s;--tilt:4deg;--dx1:-18vw;--dy1:-14vh;--dx2:-2vw;--dy2:-34vh;--dx3:18vw;--dy3:-12vh;--dx4:8vw;--dy4:8vh;">
+          <div class="game-emoji">😫</div>
+        </a>
+      </section>
+    </main>
+    <script>
+      const clockButton = document.getElementById("home-clock");
+      const updateClock = () => {
+        const now = new Date();
+        clockButton.textContent = now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true });
+      };
+      updateClock();
+      setInterval(updateClock, 1000);
+      clockButton.addEventListener("click", () => {
+        document.body.classList.toggle("is-paused");
+      });
+    </script>
+  </body>
+</html>

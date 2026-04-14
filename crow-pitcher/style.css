@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f0fdf4;
+  color: #4a5568;
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.game-page {
+  min-height: 100vh;
+  padding: 4.6rem 1rem 1rem;
+}
+
+.back-link,
+.reset-btn {
+  position: absolute;
+  top: 1rem;
+  padding: 0.75rem 1.2rem;
+  border-radius: 30px;
+  border: 4px solid #edf2f7;
+  background: #fff;
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  font-weight: 800;
+}
+
+.back-link { left: 1rem; }
+.reset-btn { right: 1rem; cursor: pointer; }
+
+.message-board {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.scene-area {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(2rem, 10vw, 8rem);
+  min-height: min(360px, calc(100vh - 250px));
+  width: min(1000px, 100%);
+  margin: 2rem auto 0;
+  padding-bottom: 2rem;
+  border-bottom: 6px solid #86efac;
+}
+
+.crow {
+  font-size: clamp(8rem, 18vw, 15rem);
+  line-height: 1;
+  transform: scaleX(-1);
+  cursor: pointer;
+}
+
+.pitcher {
+  position: relative;
+  width: 120px;
+  height: 180px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: none;
+  transform-origin: 50% 85%;
+}
+
+.pitcher-opening {
+  display: none;
+}
+
+.pitcher-body {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  border: 4px solid #cbd5e1;
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.water {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #63b3ed;
+  transition: height 0.35s ease;
+}
+
+.pitcher-stones {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100%;
+}
+
+.dropped-stone {
+  position: absolute;
+  font-size: 1.4rem;
+}
+
+.stones-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.stone {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 3rem;
+  cursor: pointer;
+  touch-action: none;
+}

@@ -1,0 +1,369 @@
+@import "../style.css";
+
+body {
+  background: linear-gradient(180deg, #b5e61d 0%, #76b041 100%);
+  overflow: hidden;
+}
+
+#game-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Landscape Elements */
+.pond {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 15vw;
+  height: 15vw;
+  background: rgba(135, 206, 235, 0.6);
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  font-size: 0; /* hide raw text */
+  color: transparent;
+  z-index: 1;
+}
+
+.fish {
+  position: absolute;
+  font-size: 2rem;
+  animation: swim 3s infinite alternate ease-in-out;
+  color: initial;
+}
+
+#fish1 { animation-delay: 0s; top: 20%; left: 20%; }
+#fish2 { animation-delay: 1s; top: 60%; left: 40%; }
+#fish3 { animation-delay: 2s; top: 30%; left: 60%; }
+
+@keyframes swim {
+  from { transform: translate(-10px, -5px) rotate(-15deg); }
+  to { transform: translate(10px, 5px) rotate(15deg); }
+}
+
+.house {
+  position: absolute;
+  font-size: 6rem;
+  z-index: 5;
+}
+
+#red-house {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+#grandma-house {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+.character {
+  position: absolute;
+  font-size: 4rem;
+  z-index: 10;
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#red-riding-hood {
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  cursor: grab;
+  touch-action: none;
+}
+
+#red-riding-hood:active {
+  cursor: grabbing;
+  transform: translateY(-50%) scale(1.1);
+}
+
+#grandma {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  cursor: grab;
+  touch-action: none;
+}
+
+#grandma:active {
+  cursor: grabbing;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Dialog & Phone */
+.phone-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+}
+
+.phone-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 1.8%;
+  transform: translateY(-50%) scale(0.88);
+  z-index: 60;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.center-phone {
+  top: 70% !important; /* move below dialog */
+  left: 50% !important;
+  transform: translate(-50%, -50%) scale(1.5) !important;
+}
+
+.vibrate {
+  animation: vibratePhone 0.1s infinite;
+}
+
+@keyframes vibratePhone {
+  0% { transform: translate(-50%, 50%) scale(1.5) rotate(-5deg); }
+  50% { transform: translate(-50%, 50%) scale(1.5) rotate(5deg); }
+  100% { transform: translate(-50%, 50%) scale(1.5) rotate(-5deg); }
+}
+
+.dialog {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  width: 350px;
+  transform-origin: center center;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dialog button {
+  margin-top: 15px;
+  padding: 10px 30px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.dialog button:hover {
+  background: #ff5252;
+}
+
+.phone {
+  font-size: 3.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.phone:hover {
+  transform: scale(1.1) rotate(-10deg);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.72); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Roads */
+.road {
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  height: 40px;
+  background: #d4a373;
+  border-radius: 20px;
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.top-road {
+  top: 35%;
+}
+
+.bottom-road {
+  top: 65%;
+}
+
+.wolf {
+  font-size: 5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  animation: bounceWolf 2s infinite alternate ease-in-out;
+}
+
+@keyframes bounceWolf {
+  from { transform: translateX(-50%) translateY(-25px); }
+  to { transform: translateX(-50%) translateY(-10px); }
+}
+
+.forest {
+  position: absolute;
+  left: 20%; /* towards the left of the top road */
+  transform: translateY(-40px);
+  display: flex;
+  font-size: 5rem;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.tree {
+  margin: 0 -15px;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.tree.parted {
+  transform: translateX(-60px) rotate(-20deg);
+  opacity: 1; /* Kept solid so mushroom squad can hide behind them */
+}
+
+.tree:last-child.parted {
+  transform: translateX(60px) rotate(20deg);
+}
+
+.hidden-mushroom {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3.5rem;
+  z-index: -1;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.forest.revealed .hidden-mushroom {
+  transform: translate(-50%, -50%) scale(1.4);
+  z-index: 10;
+}
+
+/* Generated characters styling */
+.entity-animated {
+  position: absolute;
+  font-size: 4rem;
+  z-index: 100;
+  transition: all 4s linear;
+  pointer-events: none;
+  display: flex;
+}
+
+.squad-member {
+  margin: 0 -5px;
+  animation: bob 0.5s infinite alternate;
+}
+
+.mushroom-squad {
+  gap: 8px;
+}
+
+.mushroom-leader {
+  position: relative;
+  font-size: 3.4rem;
+}
+
+.mini-mushroom {
+  font-size: 2.2rem;
+  margin-left: -10px;
+}
+
+.mushroom-body {
+  display: inline-block;
+}
+
+.mushroom-eyes {
+  position: absolute;
+  top: -0.34em;
+  left: 0.31em;
+  font-size: 0.52em;
+  line-height: 1;
+}
+
+.win-burst {
+  display: inline-block;
+  font-size: 3rem;
+  white-space: nowrap;
+  transform: translateY(52px);
+}
+
+@keyframes bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+.plane-rider {
+  position: relative;
+  display: inline-block;
+}
+
+.plane-icon {
+  font-size: 4rem;
+}
+
+.rider-icon {
+  position: absolute;
+  font-size: 2rem;
+  top: -15px;
+  left: 20px;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 1rem;
+  padding: 0.75rem 1.2rem;
+  background: white;
+  border: 4px solid #edf2f7;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  color: #4a5568;
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 8px 16px -4px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+}
+
+.home-btn {
+  left: 1rem;
+}
+
+.reset-btn {
+  right: 1rem;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  box-shadow: 0 8px 16px -4px rgba(0,0,0,0.1);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}

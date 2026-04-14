@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Little Red Riding Hood</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="game-container">
+      <a href="../index.html" class="nav-btn home-btn" title="Back to Home">🏠 Home</a>
+      <button id="reset-btn" class="nav-btn reset-btn" type="button">Reset</button>
+      
+      <!-- Mom Dialog Overlay -->
+      <div class="phone-container hidden" id="phone-container">
+        <div class="dialog" id="mom-dialog">
+          <div>👩</div>
+          <div><b>Grandma has no mashrooms, send some to her house!</b></div>
+          <button id="close-dialog">OK</button>
+        </div>
+      </div>
+
+      <div class="phone-container hidden" id="win-dialog-container">
+        <div class="dialog" id="win-dialog">
+          <div>👵</div>
+          <div><b>Grandma has plenty of mushrooms now!</b></div>
+          <button id="close-win-dialog">OK</button>
+        </div>
+      </div>
+
+      <!-- Left / Start Area -->
+      <div class="pond" id="pond">
+        💧
+        <div class="fish" id="fish1">🐟</div>
+        <div class="fish" id="fish2">🐟</div>
+        <div class="fish" id="fish3">🐟</div>
+      </div>
+      <div class="house" id="red-house">🏠</div>
+      
+      <div class="phone-wrapper center-phone vibrate" id="phone-wrapper">
+        <div class="phone" id="phone">📱</div>
+      </div>
+
+      <div class="character draggable" id="red-riding-hood" draggable="false">👧</div>
+      
+      <!-- Middle Roads -->
+      <div class="road top-road" id="top-road">
+        <div class="forest" id="forest">
+          <div class="tree">🌲</div>
+          <div class="tree">🌲</div>
+          <div class="tree">🌲</div>
+          <div class="hidden-mushroom" id="hidden-mushroom">🍄</div>
+        </div>
+        <div class="wolf" id="top-wolf">🐺</div>
+      </div>
+      
+      <div class="road bottom-road" id="bottom-road">
+        <div class="wolf" id="bottom-wolf">🐺</div>
+      </div>
+      
+      <!-- Right / End Area -->
+      <div class="house" id="grandma-house">🏡</div>
+      <div class="character" id="grandma">👵</div>
+      
+    </div>
+    <script src="./main.js" type="module"></script>
+  </body>
+</html>

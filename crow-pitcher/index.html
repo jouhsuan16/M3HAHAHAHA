@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirsty Crow</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="game-page">
+      <a class="back-link" href="../index.html">🏠 Home</a>
+      <button class="reset-btn" id="reset-btn">Reset</button>
+      <div class="message-board" id="message-board"></div>
+
+      <section class="scene-area">
+        <div class="crow" id="crow-target">🐦‍⬛</div>
+        <button class="pitcher" id="pitcher" draggable="true">
+          <div class="pitcher-opening"></div>
+          <div class="pitcher-body">
+            <div class="water" id="water"></div>
+            <div class="pitcher-stones" id="pitcher-stones"></div>
+          </div>
+        </button>
+      </section>
+
+      <section class="stones-area" id="stones-area"></section>
+    </main>
+    <script src="./main.js"></script>
+  </body>
+</html>

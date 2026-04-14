@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panic Tetris</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="game-page">
+      <a class="back-link" href="../index.html">🏠 Home</a>
+      <button class="reset-btn" id="reset-btn" type="button">Reset</button>
+      <div class="tetris-wrap">
+        <div class="tetris-side">
+          <div class="stat-box" id="score-box">Score: 0</div>
+          <button class="shovel-logo" id="shovel-btn" aria-label="Dig hole" type="button">
+            <svg class="shovel-svg" viewBox="0 0 120 150" aria-hidden="true">
+              <defs>
+                <linearGradient id="handle-grad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#d8a16d"></stop>
+                  <stop offset="100%" stop-color="#9a633f"></stop>
+                </linearGradient>
+                <linearGradient id="metal-grad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#f2f7fa"></stop>
+                  <stop offset="45%" stop-color="#b5c2ca"></stop>
+                  <stop offset="100%" stop-color="#6b7b84"></stop>
+                </linearGradient>
+                <linearGradient id="grip-grad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#ff8b83"></stop>
+                  <stop offset="100%" stop-color="#b92f28"></stop>
+                </linearGradient>
+              </defs>
+              <g transform="rotate(28 60 75)">
+                <rect x="48" y="26" width="13" height="72" rx="6" fill="url(#handle-grad)"></rect>
+                <path d="M38 8h33c9 0 16 7 16 16v18c0 5-4 9-9 9h-9V31c0-4-3-7-7-7H48c-4 0-7 3-7 7v20h-9c-5 0-9-4-9-9V24c0-9 7-16 15-16Z" fill="url(#grip-grad)"></path>
+                <rect x="42" y="18" width="26" height="10" rx="5" fill="#cf4d45"></rect>
+                <path d="M25 96c11-9 25-14 42-14 11 0 21 3 29 8l6 4-7 17c-6 16-19 29-35 35l-8 3-8-3c-17-6-30-20-36-38L4 97l21-1Z" fill="url(#metal-grad)"></path>
+                <path d="M50 86c-14 4-23 12-31 24l-7-13 13-1c10-8 22-12 37-12-4 0-8 1-12 2Z" fill="#eef6fb" opacity="0.8"></path>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="board-wrap">
+          <div class="tetris-board" id="board"></div>
+          <div class="fallen-layer" id="fallen-layer"></div>
+        </div>
+      </div>
+    </main>
+    <script src="./main.js"></script>
+  </body>
+</html>
